@@ -170,7 +170,8 @@ def lambda_handler():
 
     return {"statusCode": 200, "body": f"Uploaded video #{start}"}
 
-# event, context
-lambda_handler()
+for i in range(len(sorted(get_videos_from_s3(), key=lambda x: int(x.split("/")[-1].split(".")[0][5:])))):
+    lambda_handler()
+    time.sleep(20*60)
 # driver=1
 # print(load_cookies(driver))
